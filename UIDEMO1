@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Main {
+    public static void main(String[] args) {
+        //Frame and Panel
+        JFrame frame = new JFrame("Garde's First UI Frame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        panel.setBounds(10, 10, 360, 345);
+        //panel.setBackground(Color.GREEN);
+
+        JLabel labelOne, labelTwo, labelResult;
+        JTextField tFieldOne, tFieldTwo;
+        tFieldOne = new JTextField(20);
+        tFieldTwo = new JTextField(20);
+        labelOne = new JLabel("First Name");
+        labelTwo = new JLabel("Last Name");
+        labelResult = new JLabel("");
+        labelOne.setBounds(10, 10, 90, 20);
+        tFieldOne.setBounds(10, 10, 90, 20);
+        labelTwo.setBounds(10, 10, 90, 20);
+        tFieldTwo.setBounds(10, 10, 90, 20);
+        panel.add(labelResult);
+        panel.add(labelOne);
+        panel.add(tFieldOne);
+        panel.add(labelTwo);
+        panel.add(tFieldTwo);
+
+        JButton button = new JButton ("Click here!");
+        button.setBounds(10, 10, 90, 20);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("I Labyu");
+                System.out.println(tFieldOne.getText());
+                System.out.println(tFieldTwo.getText());
+                int result = computeValue(tFieldOne.getText(), tFieldTwo.getText());
+                System.out.print(result);
+                labelResult.setText(String.valueOf(result));
+            }
+        });
+
+        panel.add(button);
+        frame.add(panel);
+        frame.setSize(400, 400);
+        frame.setResizable(false);
+        frame.setLayout(null);
+        frame.setVisible(true);
+
+    }
+
+    public static int computeValue(String value1, String value2){
+        int val1 = Integer.parseInt(value1);
+        int val2 = Integer.parseInt(value2);
+        int sum = val1 + val2;
+        return sum;
+    }
+}
